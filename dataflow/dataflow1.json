@@ -1,0 +1,35 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "AzureSynapseAnalyticsTable1",
+						"type": "DatasetReference"
+					},
+					"name": "STGSource"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSynapseAnalyticsTable1",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "AlterRow1"
+				},
+				{
+					"name": "DerivedColumn1"
+				}
+			],
+			"script": "parameters{\n\tSEQN as string ('555555555555')\n}\nsource(output(\n\t\tKUNNR as string,\n\t\tNAME1 as string,\n\t\tZZCPJN as string,\n\t\tZZCMDN as string,\n\t\tMATNR as string,\n\t\tKDMAT as string,\n\t\tAUART as string,\n\t\tVBELN as string,\n\t\tPOSNR as string,\n\t\tBSTKD as string,\n\t\tPOSEX as string,\n\t\tAUTLF as string,\n\t\tKZTLF as string,\n\t\tKWMENG as string,\n\t\tDNQTY as string,\n\t\tOPQTY as string,\n\t\tERDAT as string,\n\t\tERDAT_V as string,\n\t\tZZDDAT as string,\n\t\tZZCODT as string,\n\t\tZZRCDT as string,\n\t\tBEZEI as string,\n\t\tLGORT as string,\n\t\tLIFSP as string,\n\t\tWERKS as string,\n\t\tVKORG as string,\n\t\tVTWEG as string,\n\t\tSPART as string,\n\t\tZZCORG as string,\n\t\tZTEXT as string,\n\t\tEBELN as string,\n\t\tERDAT_S as string,\n\t\tERZET as string,\n\t\tSORTL as string,\n\t\tVSBED as string,\n\t\tLAND1 as string,\n\t\tLIFNR as string,\n\t\tZZRODS as string,\n\t\tLANDX as string,\n\t\tZZCSTN as string,\n\t\tBNAME as string,\n\t\tBSTKD_E as string,\n\t\tINCO1 as string,\n\t\tINCO2 as string,\n\t\tINCO3 as string,\n\t\tINCO4 as string,\n\t\tKUNWE as string,\n\t\tPRSDT as string,\n\t\tERNAM as string,\n\t\tZIDCD as string,\n\t\tZCTYA as string,\n\t\tZPSTC as string,\n\t\tZZSHIN as string,\n\t\tVRKME as string,\n\t\tZTEXT2 as string,\n\t\tZNAMA as string,\n\t\tZNAMB as string,\n\t\tZADDA as string,\n\t\tZADDB as string,\n\t\tZADDC as string,\n\t\tZCTYB as string,\n\t\tZCTNA as string,\n\t\tZZRQDT as string,\n\t\tABGRU as string,\n\t\tBANFN as string,\n\t\tSTATUS as string,\n\t\tLFART as string,\n\t\tVBELN_VL as string,\n\t\tLFIMG_DN as string,\n\t\tWADAT as string,\n\t\tFKDAT as string,\n\t\tLIFSK as string,\n\t\tPPS_STATUS as string,\n\t\tIEB_STATUS as string,\n\t\tBUDAT as string,\n\t\tORCMT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: true,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tquery: 'SELECT  KUNNR\\n      ,NAME1\\n      ,ZZCPJN\\n      ,ZZCMDN\\n      ,MATNR\\n      ,KDMAT\\n      ,AUART\\n      ,ISNULL(VBELN,\\'NULL\\')VBELN\\n      ,ISNULL(POSNR,\\'NULL\\')POSNR\\n      ,BSTKD\\n      ,POSEX\\n      ,AUTLF\\n      ,KZTLF\\n      ,KWMENG\\n      ,DNQTY\\n      ,OPQTY\\n      ,ERDAT\\n      ,ERDAT_V\\n      ,ZZDDAT\\n      ,ZZCODT\\n      ,ZZRCDT\\n      ,BEZEI\\n      ,LGORT\\n      ,LIFSP\\n      ,ISNULL(WERKS,\\'NULL\\')WERKS\\n      ,VKORG\\n      ,VTWEG\\n      ,SPART\\n      ,ZZCORG\\n      ,ZTEXT\\n      ,EBELN\\n      ,ERDAT_S\\n      ,ERZET\\n      ,SORTL\\n      ,VSBED\\n      ,LAND1\\n      ,LIFNR\\n      ,ZZRODS\\n      ,LANDX\\n      ,ZZCSTN\\n      ,BNAME\\n      ,BSTKD_E\\n      ,INCO1\\n      ,INCO2\\n      ,INCO3\\n      ,INCO4\\n      ,KUNWE\\n      ,PRSDT\\n      ,ERNAM\\n      ,ZIDCD\\n      ,ZCTYA\\n      ,ZPSTC\\n      ,ZZSHIN\\n      ,VRKME\\n      ,ZTEXT2\\n      ,ZNAMA\\n      ,ZNAMB\\n      ,ZADDA\\n      ,ZADDB\\n      ,ZADDC\\n      ,ZCTYB\\n      ,ZCTNA\\n      ,ZZRQDT\\n      ,ABGRU\\n      ,BANFN\\n      ,STATUS\\n      ,LFART\\n      ,ISNULL(VBELN_VL,\\'NULL\\')VBELN_VL\\n      ,LFIMG_DN\\n      ,WADAT\\n      ,FKDAT\\n      ,LIFSK\\n      ,PPS_STATUS\\n      ,IEB_STATUS\\n      ,BUDAT\\n      ,ORCMT\\n  FROM (\\n\tSELECT *,ROW_NUMBER()over (PARTITION BY VBELN,POSNR,WERKS,ISNULL(VBELN_VL,\\'NULL\\') ORDER BY system_create_time DESC) AS RANKING \\n\tFROM B2B.STG_SAP_SO a\\n\tJOIN\\n\t(\\n\t\tSELECT [SOURCE_SEQN] FROM [B2B].[DP_JOB_BASE]\\n\t)b\\n\tON a.[SEQN] > b.[SOURCE_SEQN]\\n  ) A \\n        WHERE A.RANKING=\\'1\\'',\n\tformat: 'query',\n\tstaged: false) ~> STGSource\nSTGSource alterRow(updateIf(true())) ~> AlterRow1\nAlterRow1 derive(SEQN = $SEQN,\n\t\tUPDATE_YEAR = year(currentUTC()),\n\t\tUPDATE_MONTH = month(currentUTC()),\n\t\tSYSTEM_UPDATE_TIME = currentUTC(),\n\t\tSYSTEM_UPDATE_LOCALTIME = fromUTC(currentUTC(), 'Asia/Taipei'),\n\t\tSYSTEM_CREATE_TIME = currentUTC(),\n\t\tSYSTEM_CREATE_LOCALTIME = fromUTC(currentUTC(), 'Asia/Taipei')) ~> DerivedColumn1\nDerivedColumn1 sink(input(\n\t\tKUNNR as string,\n\t\tNAME1 as string,\n\t\tZZCPJN as string,\n\t\tZZCMDN as string,\n\t\tMATNR as string,\n\t\tKDMAT as string,\n\t\tAUART as string,\n\t\tVBELN as string,\n\t\tPOSNR as string,\n\t\tBSTKD as string,\n\t\tPOSEX as string,\n\t\tAUTLF as string,\n\t\tKZTLF as string,\n\t\tKWMENG as string,\n\t\tDNQTY as string,\n\t\tOPQTY as string,\n\t\tERDAT as string,\n\t\tERDAT_V as string,\n\t\tZZDDAT as string,\n\t\tZZCODT as string,\n\t\tZZRCDT as string,\n\t\tBEZEI as string,\n\t\tLGORT as string,\n\t\tLIFSP as string,\n\t\tWERKS as string,\n\t\tVKORG as string,\n\t\tVTWEG as string,\n\t\tSPART as string,\n\t\tZZCORG as string,\n\t\tZTEXT as string,\n\t\tEBELN as string,\n\t\tERDAT_S as string,\n\t\tERZET as string,\n\t\tSORTL as string,\n\t\tVSBED as string,\n\t\tLAND1 as string,\n\t\tLIFNR as string,\n\t\tZZRODS as string,\n\t\tLANDX as string,\n\t\tZZCSTN as string,\n\t\tBNAME as string,\n\t\tBSTKD_E as string,\n\t\tINCO1 as string,\n\t\tINCO2 as string,\n\t\tINCO3 as string,\n\t\tINCO4 as string,\n\t\tKUNWE as string,\n\t\tPRSDT as string,\n\t\tERNAM as string,\n\t\tZIDCD as string,\n\t\tZCTYA as string,\n\t\tZPSTC as string,\n\t\tZZSHIN as string,\n\t\tVRKME as string,\n\t\tZTEXT2 as string,\n\t\tZNAMA as string,\n\t\tZNAMB as string,\n\t\tZADDA as string,\n\t\tZADDB as string,\n\t\tZADDC as string,\n\t\tZCTYB as string,\n\t\tZCTNA as string,\n\t\tZZRQDT as string,\n\t\tABGRU as string,\n\t\tBANFN as string,\n\t\tSTATUS as string,\n\t\tLFART as string,\n\t\tVBELN_VL as string,\n\t\tLFIMG_DN as string,\n\t\tWADAT as string,\n\t\tFKDAT as string,\n\t\tLIFSK as string,\n\t\tPPS_STATUS as string,\n\t\tIEB_STATUS as string,\n\t\tBUDAT as string,\n\t\tORCMT as string,\n\t\tSEQN as decimal(20,0),\n\t\tYEAR as integer,\n\t\tMONTH as integer,\n\t\tSYSTEM_CREATE_TIME as timestamp,\n\t\tSYSTEM_CREATE_LOCALTIME as timestamp,\n\t\tID as integer\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: true,\n\tdeletable:false,\n\tinsertable:false,\n\tupdateable:false,\n\tupsertable:true,\n\tkeys:['VBELN','POSNR','WERKS','VBELN_VL'],\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+		}
+	}
+}

@@ -1,0 +1,9 @@
+{
+	"name": "wiwynnadf",
+	"location": "southeastasia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "d428456a-ca57-4df4-a174-71e44f1be6ec",
+		"tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+	}
+}

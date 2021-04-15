@@ -1,0 +1,355 @@
+{
+	"name": "AzureSynapseAnalyticsTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SynapseCDBD",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "KUNNR",
+				"type": "varchar"
+			},
+			{
+				"name": "NAME1",
+				"type": "varchar"
+			},
+			{
+				"name": "ZZCPJN",
+				"type": "varchar"
+			},
+			{
+				"name": "ZZCMDN",
+				"type": "varchar"
+			},
+			{
+				"name": "MATNR",
+				"type": "varchar"
+			},
+			{
+				"name": "KDMAT",
+				"type": "varchar"
+			},
+			{
+				"name": "AUART",
+				"type": "varchar"
+			},
+			{
+				"name": "VBELN",
+				"type": "varchar"
+			},
+			{
+				"name": "POSNR",
+				"type": "varchar"
+			},
+			{
+				"name": "BSTKD",
+				"type": "varchar"
+			},
+			{
+				"name": "POSEX",
+				"type": "varchar"
+			},
+			{
+				"name": "AUTLF",
+				"type": "varchar"
+			},
+			{
+				"name": "KZTLF",
+				"type": "varchar"
+			},
+			{
+				"name": "KWMENG",
+				"type": "varchar"
+			},
+			{
+				"name": "DNQTY",
+				"type": "varchar"
+			},
+			{
+				"name": "OPQTY",
+				"type": "varchar"
+			},
+			{
+				"name": "ERDAT",
+				"type": "varchar"
+			},
+			{
+				"name": "ERDAT_V",
+				"type": "varchar"
+			},
+			{
+				"name": "ZZDDAT",
+				"type": "varchar"
+			},
+			{
+				"name": "ZZCODT",
+				"type": "varchar"
+			},
+			{
+				"name": "ZZRCDT",
+				"type": "varchar"
+			},
+			{
+				"name": "BEZEI",
+				"type": "varchar"
+			},
+			{
+				"name": "LGORT",
+				"type": "varchar"
+			},
+			{
+				"name": "LIFSP",
+				"type": "varchar"
+			},
+			{
+				"name": "WERKS",
+				"type": "varchar"
+			},
+			{
+				"name": "VKORG",
+				"type": "varchar"
+			},
+			{
+				"name": "VTWEG",
+				"type": "varchar"
+			},
+			{
+				"name": "SPART",
+				"type": "varchar"
+			},
+			{
+				"name": "ZZCORG",
+				"type": "varchar"
+			},
+			{
+				"name": "ZTEXT",
+				"type": "varchar"
+			},
+			{
+				"name": "EBELN",
+				"type": "varchar"
+			},
+			{
+				"name": "ERDAT_S",
+				"type": "varchar"
+			},
+			{
+				"name": "ERZET",
+				"type": "varchar"
+			},
+			{
+				"name": "SORTL",
+				"type": "varchar"
+			},
+			{
+				"name": "VSBED",
+				"type": "varchar"
+			},
+			{
+				"name": "LAND1",
+				"type": "varchar"
+			},
+			{
+				"name": "LIFNR",
+				"type": "varchar"
+			},
+			{
+				"name": "ZZRODS",
+				"type": "varchar"
+			},
+			{
+				"name": "LANDX",
+				"type": "varchar"
+			},
+			{
+				"name": "ZZCSTN",
+				"type": "varchar"
+			},
+			{
+				"name": "BNAME",
+				"type": "varchar"
+			},
+			{
+				"name": "BSTKD_E",
+				"type": "varchar"
+			},
+			{
+				"name": "INCO1",
+				"type": "varchar"
+			},
+			{
+				"name": "INCO2",
+				"type": "varchar"
+			},
+			{
+				"name": "INCO3",
+				"type": "varchar"
+			},
+			{
+				"name": "INCO4",
+				"type": "varchar"
+			},
+			{
+				"name": "KUNWE",
+				"type": "varchar"
+			},
+			{
+				"name": "PRSDT",
+				"type": "varchar"
+			},
+			{
+				"name": "ERNAM",
+				"type": "varchar"
+			},
+			{
+				"name": "ZIDCD",
+				"type": "varchar"
+			},
+			{
+				"name": "ZCTYA",
+				"type": "varchar"
+			},
+			{
+				"name": "ZPSTC",
+				"type": "varchar"
+			},
+			{
+				"name": "ZZSHIN",
+				"type": "varchar"
+			},
+			{
+				"name": "VRKME",
+				"type": "varchar"
+			},
+			{
+				"name": "ZTEXT2",
+				"type": "varchar"
+			},
+			{
+				"name": "ZNAMA",
+				"type": "varchar"
+			},
+			{
+				"name": "ZNAMB",
+				"type": "varchar"
+			},
+			{
+				"name": "ZADDA",
+				"type": "varchar"
+			},
+			{
+				"name": "ZADDB",
+				"type": "varchar"
+			},
+			{
+				"name": "ZADDC",
+				"type": "varchar"
+			},
+			{
+				"name": "ZCTYB",
+				"type": "varchar"
+			},
+			{
+				"name": "ZCTNA",
+				"type": "varchar"
+			},
+			{
+				"name": "ZZRQDT",
+				"type": "varchar"
+			},
+			{
+				"name": "ABGRU",
+				"type": "varchar"
+			},
+			{
+				"name": "BANFN",
+				"type": "varchar"
+			},
+			{
+				"name": "STATUS",
+				"type": "varchar"
+			},
+			{
+				"name": "LFART",
+				"type": "varchar"
+			},
+			{
+				"name": "VBELN_VL",
+				"type": "varchar"
+			},
+			{
+				"name": "LFIMG_DN",
+				"type": "varchar"
+			},
+			{
+				"name": "WADAT",
+				"type": "varchar"
+			},
+			{
+				"name": "FKDAT",
+				"type": "varchar"
+			},
+			{
+				"name": "LIFSK",
+				"type": "varchar"
+			},
+			{
+				"name": "PPS_STATUS",
+				"type": "varchar"
+			},
+			{
+				"name": "IEB_STATUS",
+				"type": "varchar"
+			},
+			{
+				"name": "BUDAT",
+				"type": "varchar"
+			},
+			{
+				"name": "ORCMT",
+				"type": "varchar"
+			},
+			{
+				"name": "SEQN",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "YEAR",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "MONTH",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SYSTEM_CREATE_TIME",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SYSTEM_CREATE_LOCALTIME",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ID",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "B2B",
+			"table": "STG_SAP_SO"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
