@@ -1,0 +1,540 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "wiwynnadf2"
+		},
+		"ADLS_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ADLS'"
+		},
+		"SynapseCDBD_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'SynapseCDBD'"
+		},
+		"ADLS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://dls4wp.dfs.core.windows.net"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/ADLS')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('ADLS_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('ADLS_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SynapseCDBD')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDW",
+				"typeProperties": {
+					"connectionString": "[parameters('SynapseCDBD_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSynapseAnalyticsTable1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "SynapseCDBD",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlDWTable",
+				"schema": [
+					{
+						"name": "KUNNR",
+						"type": "varchar"
+					},
+					{
+						"name": "NAME1",
+						"type": "varchar"
+					},
+					{
+						"name": "ZZCPJN",
+						"type": "varchar"
+					},
+					{
+						"name": "ZZCMDN",
+						"type": "varchar"
+					},
+					{
+						"name": "MATNR",
+						"type": "varchar"
+					},
+					{
+						"name": "KDMAT",
+						"type": "varchar"
+					},
+					{
+						"name": "AUART",
+						"type": "varchar"
+					},
+					{
+						"name": "VBELN",
+						"type": "varchar"
+					},
+					{
+						"name": "POSNR",
+						"type": "varchar"
+					},
+					{
+						"name": "BSTKD",
+						"type": "varchar"
+					},
+					{
+						"name": "POSEX",
+						"type": "varchar"
+					},
+					{
+						"name": "AUTLF",
+						"type": "varchar"
+					},
+					{
+						"name": "KZTLF",
+						"type": "varchar"
+					},
+					{
+						"name": "KWMENG",
+						"type": "varchar"
+					},
+					{
+						"name": "DNQTY",
+						"type": "varchar"
+					},
+					{
+						"name": "OPQTY",
+						"type": "varchar"
+					},
+					{
+						"name": "ERDAT",
+						"type": "varchar"
+					},
+					{
+						"name": "ERDAT_V",
+						"type": "varchar"
+					},
+					{
+						"name": "ZZDDAT",
+						"type": "varchar"
+					},
+					{
+						"name": "ZZCODT",
+						"type": "varchar"
+					},
+					{
+						"name": "ZZRCDT",
+						"type": "varchar"
+					},
+					{
+						"name": "BEZEI",
+						"type": "varchar"
+					},
+					{
+						"name": "LGORT",
+						"type": "varchar"
+					},
+					{
+						"name": "LIFSP",
+						"type": "varchar"
+					},
+					{
+						"name": "WERKS",
+						"type": "varchar"
+					},
+					{
+						"name": "VKORG",
+						"type": "varchar"
+					},
+					{
+						"name": "VTWEG",
+						"type": "varchar"
+					},
+					{
+						"name": "SPART",
+						"type": "varchar"
+					},
+					{
+						"name": "ZZCORG",
+						"type": "varchar"
+					},
+					{
+						"name": "ZTEXT",
+						"type": "varchar"
+					},
+					{
+						"name": "EBELN",
+						"type": "varchar"
+					},
+					{
+						"name": "ERDAT_S",
+						"type": "varchar"
+					},
+					{
+						"name": "ERZET",
+						"type": "varchar"
+					},
+					{
+						"name": "SORTL",
+						"type": "varchar"
+					},
+					{
+						"name": "VSBED",
+						"type": "varchar"
+					},
+					{
+						"name": "LAND1",
+						"type": "varchar"
+					},
+					{
+						"name": "LIFNR",
+						"type": "varchar"
+					},
+					{
+						"name": "ZZRODS",
+						"type": "varchar"
+					},
+					{
+						"name": "LANDX",
+						"type": "varchar"
+					},
+					{
+						"name": "ZZCSTN",
+						"type": "varchar"
+					},
+					{
+						"name": "BNAME",
+						"type": "varchar"
+					},
+					{
+						"name": "BSTKD_E",
+						"type": "varchar"
+					},
+					{
+						"name": "INCO1",
+						"type": "varchar"
+					},
+					{
+						"name": "INCO2",
+						"type": "varchar"
+					},
+					{
+						"name": "INCO3",
+						"type": "varchar"
+					},
+					{
+						"name": "INCO4",
+						"type": "varchar"
+					},
+					{
+						"name": "KUNWE",
+						"type": "varchar"
+					},
+					{
+						"name": "PRSDT",
+						"type": "varchar"
+					},
+					{
+						"name": "ERNAM",
+						"type": "varchar"
+					},
+					{
+						"name": "ZIDCD",
+						"type": "varchar"
+					},
+					{
+						"name": "ZCTYA",
+						"type": "varchar"
+					},
+					{
+						"name": "ZPSTC",
+						"type": "varchar"
+					},
+					{
+						"name": "ZZSHIN",
+						"type": "varchar"
+					},
+					{
+						"name": "VRKME",
+						"type": "varchar"
+					},
+					{
+						"name": "ZTEXT2",
+						"type": "varchar"
+					},
+					{
+						"name": "ZNAMA",
+						"type": "varchar"
+					},
+					{
+						"name": "ZNAMB",
+						"type": "varchar"
+					},
+					{
+						"name": "ZADDA",
+						"type": "varchar"
+					},
+					{
+						"name": "ZADDB",
+						"type": "varchar"
+					},
+					{
+						"name": "ZADDC",
+						"type": "varchar"
+					},
+					{
+						"name": "ZCTYB",
+						"type": "varchar"
+					},
+					{
+						"name": "ZCTNA",
+						"type": "varchar"
+					},
+					{
+						"name": "ZZRQDT",
+						"type": "varchar"
+					},
+					{
+						"name": "ABGRU",
+						"type": "varchar"
+					},
+					{
+						"name": "BANFN",
+						"type": "varchar"
+					},
+					{
+						"name": "STATUS",
+						"type": "varchar"
+					},
+					{
+						"name": "LFART",
+						"type": "varchar"
+					},
+					{
+						"name": "VBELN_VL",
+						"type": "varchar"
+					},
+					{
+						"name": "LFIMG_DN",
+						"type": "varchar"
+					},
+					{
+						"name": "WADAT",
+						"type": "varchar"
+					},
+					{
+						"name": "FKDAT",
+						"type": "varchar"
+					},
+					{
+						"name": "LIFSK",
+						"type": "varchar"
+					},
+					{
+						"name": "PPS_STATUS",
+						"type": "varchar"
+					},
+					{
+						"name": "IEB_STATUS",
+						"type": "varchar"
+					},
+					{
+						"name": "BUDAT",
+						"type": "varchar"
+					},
+					{
+						"name": "ORCMT",
+						"type": "varchar"
+					},
+					{
+						"name": "SEQN",
+						"type": "decimal",
+						"precision": 20,
+						"scale": 0
+					},
+					{
+						"name": "YEAR",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "MONTH",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "SYSTEM_CREATE_TIME",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "SYSTEM_CREATE_LOCALTIME",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "ID",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "B2B",
+					"table": "STG_SAP_SO"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/SynapseCDBD')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/dataflow1')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "AzureSynapseAnalyticsTable1",
+								"type": "DatasetReference"
+							},
+							"name": "STGSource"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "AzureSynapseAnalyticsTable1",
+								"type": "DatasetReference"
+							},
+							"name": "sink1"
+						}
+					],
+					"transformations": [
+						{
+							"name": "AlterRow1"
+						},
+						{
+							"name": "DerivedColumn1"
+						}
+					],
+					"script": "parameters{\n\tSEQN as string ('555555555555')\n}\nsource(output(\n\t\tKUNNR as string,\n\t\tNAME1 as string,\n\t\tZZCPJN as string,\n\t\tZZCMDN as string,\n\t\tMATNR as string,\n\t\tKDMAT as string,\n\t\tAUART as string,\n\t\tVBELN as string,\n\t\tPOSNR as string,\n\t\tBSTKD as string,\n\t\tPOSEX as string,\n\t\tAUTLF as string,\n\t\tKZTLF as string,\n\t\tKWMENG as string,\n\t\tDNQTY as string,\n\t\tOPQTY as string,\n\t\tERDAT as string,\n\t\tERDAT_V as string,\n\t\tZZDDAT as string,\n\t\tZZCODT as string,\n\t\tZZRCDT as string,\n\t\tBEZEI as string,\n\t\tLGORT as string,\n\t\tLIFSP as string,\n\t\tWERKS as string,\n\t\tVKORG as string,\n\t\tVTWEG as string,\n\t\tSPART as string,\n\t\tZZCORG as string,\n\t\tZTEXT as string,\n\t\tEBELN as string,\n\t\tERDAT_S as string,\n\t\tERZET as string,\n\t\tSORTL as string,\n\t\tVSBED as string,\n\t\tLAND1 as string,\n\t\tLIFNR as string,\n\t\tZZRODS as string,\n\t\tLANDX as string,\n\t\tZZCSTN as string,\n\t\tBNAME as string,\n\t\tBSTKD_E as string,\n\t\tINCO1 as string,\n\t\tINCO2 as string,\n\t\tINCO3 as string,\n\t\tINCO4 as string,\n\t\tKUNWE as string,\n\t\tPRSDT as string,\n\t\tERNAM as string,\n\t\tZIDCD as string,\n\t\tZCTYA as string,\n\t\tZPSTC as string,\n\t\tZZSHIN as string,\n\t\tVRKME as string,\n\t\tZTEXT2 as string,\n\t\tZNAMA as string,\n\t\tZNAMB as string,\n\t\tZADDA as string,\n\t\tZADDB as string,\n\t\tZADDC as string,\n\t\tZCTYB as string,\n\t\tZCTNA as string,\n\t\tZZRQDT as string,\n\t\tABGRU as string,\n\t\tBANFN as string,\n\t\tSTATUS as string,\n\t\tLFART as string,\n\t\tVBELN_VL as string,\n\t\tLFIMG_DN as string,\n\t\tWADAT as string,\n\t\tFKDAT as string,\n\t\tLIFSK as string,\n\t\tPPS_STATUS as string,\n\t\tIEB_STATUS as string,\n\t\tBUDAT as string,\n\t\tORCMT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: true,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tquery: 'SELECT  KUNNR\\n      ,NAME1\\n      ,ZZCPJN\\n      ,ZZCMDN\\n      ,MATNR\\n      ,KDMAT\\n      ,AUART\\n      ,ISNULL(VBELN,\\'NULL\\')VBELN\\n      ,ISNULL(POSNR,\\'NULL\\')POSNR\\n      ,BSTKD\\n      ,POSEX\\n      ,AUTLF\\n      ,KZTLF\\n      ,KWMENG\\n      ,DNQTY\\n      ,OPQTY\\n      ,ERDAT\\n      ,ERDAT_V\\n      ,ZZDDAT\\n      ,ZZCODT\\n      ,ZZRCDT\\n      ,BEZEI\\n      ,LGORT\\n      ,LIFSP\\n      ,ISNULL(WERKS,\\'NULL\\')WERKS\\n      ,VKORG\\n      ,VTWEG\\n      ,SPART\\n      ,ZZCORG\\n      ,ZTEXT\\n      ,EBELN\\n      ,ERDAT_S\\n      ,ERZET\\n      ,SORTL\\n      ,VSBED\\n      ,LAND1\\n      ,LIFNR\\n      ,ZZRODS\\n      ,LANDX\\n      ,ZZCSTN\\n      ,BNAME\\n      ,BSTKD_E\\n      ,INCO1\\n      ,INCO2\\n      ,INCO3\\n      ,INCO4\\n      ,KUNWE\\n      ,PRSDT\\n      ,ERNAM\\n      ,ZIDCD\\n      ,ZCTYA\\n      ,ZPSTC\\n      ,ZZSHIN\\n      ,VRKME\\n      ,ZTEXT2\\n      ,ZNAMA\\n      ,ZNAMB\\n      ,ZADDA\\n      ,ZADDB\\n      ,ZADDC\\n      ,ZCTYB\\n      ,ZCTNA\\n      ,ZZRQDT\\n      ,ABGRU\\n      ,BANFN\\n      ,STATUS\\n      ,LFART\\n      ,ISNULL(VBELN_VL,\\'NULL\\')VBELN_VL\\n      ,LFIMG_DN\\n      ,WADAT\\n      ,FKDAT\\n      ,LIFSK\\n      ,PPS_STATUS\\n      ,IEB_STATUS\\n      ,BUDAT\\n      ,ORCMT\\n  FROM (\\n\tSELECT *,ROW_NUMBER()over (PARTITION BY VBELN,POSNR,WERKS,ISNULL(VBELN_VL,\\'NULL\\') ORDER BY system_create_time DESC) AS RANKING \\n\tFROM B2B.STG_SAP_SO a\\n\tJOIN\\n\t(\\n\t\tSELECT [SOURCE_SEQN] FROM [B2B].[DP_JOB_BASE]\\n\t)b\\n\tON a.[SEQN] > b.[SOURCE_SEQN]\\n  ) A \\n        WHERE A.RANKING=\\'1\\'',\n\tformat: 'query',\n\tstaged: false) ~> STGSource\nSTGSource alterRow(updateIf(true())) ~> AlterRow1\nAlterRow1 derive(SEQN = $SEQN,\n\t\tUPDATE_YEAR = year(currentUTC()),\n\t\tUPDATE_MONTH = month(currentUTC()),\n\t\tSYSTEM_UPDATE_TIME = currentUTC(),\n\t\tSYSTEM_UPDATE_LOCALTIME = fromUTC(currentUTC(), 'Asia/Taipei'),\n\t\tSYSTEM_CREATE_TIME = currentUTC(),\n\t\tSYSTEM_CREATE_LOCALTIME = fromUTC(currentUTC(), 'Asia/Taipei')) ~> DerivedColumn1\nDerivedColumn1 sink(input(\n\t\tKUNNR as string,\n\t\tNAME1 as string,\n\t\tZZCPJN as string,\n\t\tZZCMDN as string,\n\t\tMATNR as string,\n\t\tKDMAT as string,\n\t\tAUART as string,\n\t\tVBELN as string,\n\t\tPOSNR as string,\n\t\tBSTKD as string,\n\t\tPOSEX as string,\n\t\tAUTLF as string,\n\t\tKZTLF as string,\n\t\tKWMENG as string,\n\t\tDNQTY as string,\n\t\tOPQTY as string,\n\t\tERDAT as string,\n\t\tERDAT_V as string,\n\t\tZZDDAT as string,\n\t\tZZCODT as string,\n\t\tZZRCDT as string,\n\t\tBEZEI as string,\n\t\tLGORT as string,\n\t\tLIFSP as string,\n\t\tWERKS as string,\n\t\tVKORG as string,\n\t\tVTWEG as string,\n\t\tSPART as string,\n\t\tZZCORG as string,\n\t\tZTEXT as string,\n\t\tEBELN as string,\n\t\tERDAT_S as string,\n\t\tERZET as string,\n\t\tSORTL as string,\n\t\tVSBED as string,\n\t\tLAND1 as string,\n\t\tLIFNR as string,\n\t\tZZRODS as string,\n\t\tLANDX as string,\n\t\tZZCSTN as string,\n\t\tBNAME as string,\n\t\tBSTKD_E as string,\n\t\tINCO1 as string,\n\t\tINCO2 as string,\n\t\tINCO3 as string,\n\t\tINCO4 as string,\n\t\tKUNWE as string,\n\t\tPRSDT as string,\n\t\tERNAM as string,\n\t\tZIDCD as string,\n\t\tZCTYA as string,\n\t\tZPSTC as string,\n\t\tZZSHIN as string,\n\t\tVRKME as string,\n\t\tZTEXT2 as string,\n\t\tZNAMA as string,\n\t\tZNAMB as string,\n\t\tZADDA as string,\n\t\tZADDB as string,\n\t\tZADDC as string,\n\t\tZCTYB as string,\n\t\tZCTNA as string,\n\t\tZZRQDT as string,\n\t\tABGRU as string,\n\t\tBANFN as string,\n\t\tSTATUS as string,\n\t\tLFART as string,\n\t\tVBELN_VL as string,\n\t\tLFIMG_DN as string,\n\t\tWADAT as string,\n\t\tFKDAT as string,\n\t\tLIFSK as string,\n\t\tPPS_STATUS as string,\n\t\tIEB_STATUS as string,\n\t\tBUDAT as string,\n\t\tORCMT as string,\n\t\tSEQN as decimal(20,0),\n\t\tYEAR as integer,\n\t\tMONTH as integer,\n\t\tSYSTEM_CREATE_TIME as timestamp,\n\t\tSYSTEM_CREATE_LOCALTIME as timestamp,\n\t\tID as integer\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: true,\n\tdeletable:false,\n\tinsertable:false,\n\tupdateable:false,\n\tupsertable:true,\n\tkeys:['VBELN','POSNR','WERKS','VBELN_VL'],\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/AzureSynapseAnalyticsTable1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline1')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "dataflow1",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "dataflow1",
+								"type": "DataFlowReference",
+								"parameters": {
+									"SEQN": "'555555555555'"
+								},
+								"datasetParameters": {
+									"STGSource": {},
+									"sink1": {}
+								}
+							},
+							"staging": {
+								"linkedService": {
+									"referenceName": "ADLS",
+									"type": "LinkedServiceReference"
+								},
+								"folderPath": "mstest"
+							},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"annotations": [],
+				"lastPublishTime": "2021-04-15T23:22:16Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/dataflow1')]",
+				"[concat(variables('factoryId'), '/linkedServices/ADLS')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trigger1')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pipeline1",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Minute",
+						"interval": 15,
+						"startTime": "2021-04-16T08:21:00",
+						"timeZone": "Taipei Standard Time"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pipeline1')]"
+			]
+		}
+	]
+}
