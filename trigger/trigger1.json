@@ -14,7 +14,7 @@
 		"type": "ScheduleTrigger",
 		"typeProperties": {
 			"recurrence": {
-				"frequency": "Minute",
+				"frequency": "Hour",
 				"interval": 15,
 				"startTime": "2021-04-16T08:21:00",
 				"timeZone": "Taipei Standard Time"
